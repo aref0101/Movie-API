@@ -40,6 +40,7 @@ class RegisterGenerics(generics.CreateAPIView):
 class BookmarkAPIView(generics.ListAPIView, generics.RetrieveAPIView):
     serializer_class= MovieSerializer
     permission_classes= [IsAuthenticated]
+    filter_backends= []
 
     def get_queryset(self):
         return Movie.objects.filter(bookmarked_by= self.request.user)
